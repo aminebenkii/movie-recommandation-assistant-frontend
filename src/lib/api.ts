@@ -1,6 +1,6 @@
 import { NetworkErrorMessage } from "@/data/ChatbotConfig";
 
-type Language = "en" | "fr" | "ar";
+type Language = "en" | "fr";
 
 let apiEndpoint: string | null = null;
 
@@ -12,7 +12,7 @@ async function getApiEndpoint(): Promise<string> {
     const config = await res.json();
     apiEndpoint = config.apiEndpoint;
 
-    if (!apiEndpoint) throw new Error("Missing legal assistant backend endpoint in config");
+    if (!apiEndpoint) throw new Error("Missing movie recommendation backend endpoint in config");
     return apiEndpoint;
   } catch (err) {
     console.error("Error fetching API endpoint:", err);
@@ -20,7 +20,7 @@ async function getApiEndpoint(): Promise<string> {
   }
 }
 
-export async function getLegalReply({
+export async function getMovieRecommendation({
   query,
   sessionId,
   lang,
@@ -47,7 +47,7 @@ export async function getLegalReply({
     }
     return data.answer || "⚠️ Empty answer received.";
   } catch (err) {
-    console.error("Error fetching legal reply:", err);
+    console.error("Error fetching movie recommendation:", err);
     return NetworkErrorMessage[lang];
   }
 }

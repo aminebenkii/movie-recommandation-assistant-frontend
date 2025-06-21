@@ -2,55 +2,37 @@
 
 export const IntroMessages = {
   en: {
-    title: "Need Legal Help?",
+    title: "Need Movie Recommendations?",
     button: "Start Chatting",
     body: `
-      <p>⚖️ <strong>How it works</strong></p>
-      <p>Chat with your AI legal assistant for quick answers and links to helpful resources.</p>
+      <p>🎬 <strong>How it works</strong></p>
+      <p>Chat with MoviesYouDidntWatch for personalized film suggestions.</p>
       <ul class="list-disc pl-5 space-y-1">
-        <li>Understand basic legal terms and processes</li>
-        <li>Get pointers on contracts, employment or tenant rights</li>
+        <li>Discover underrated gems</li>
+        <li>Find movies by genre or mood</li>
       </ul>
-      <p class="mt-2">Information provided is general and not legal advice.</p>
       <p class="mt-2"><em>Examples:</em><br>
-      “How do I cancel a contract?”<br>
-      “What are my rights as a tenant in Québec?”</p>
+      “Recommend a sci-fi thriller.”<br>
+      “What are some classic French comedies?”</p>
     `.trim()
   },
 
   fr: {
-    title: "Besoin d'aide juridique ?",
+    title: "Besoin de suggestions de films ?",
     button: "Commencer la discussion",
     body: `
-      <p>⚖️ <strong>Comment ça marche</strong></p>
-      <p>Discutez avec votre assistant juridique virtuel pour obtenir des réponses rapides et des liens vers des ressources officielles.</p>
+      <p>🎬 <strong>Comment ça marche</strong></p>
+      <p>Discutez avec MoviesYouDidntWatch pour obtenir des idées de films à voir.</p>
       <ul class="list-disc pl-5 space-y-1">
-        <li>Comprenez les notions et procédures juridiques de base</li>
-        <li>Trouvez des informations sur les contrats, l'emploi ou les droits des locataires</li>
+        <li>Découvrez des perles méconnues</li>
+        <li>Trouvez des films par genre ou ambiance</li>
       </ul>
-      <p class="mt-2">Ces informations sont générales et ne constituent pas un conseil juridique.</p>
       <p class="mt-2"><em>Exemples :</em><br>
-      « Comment résilier un contrat ? »<br>
-    « Quels sont mes droits de locataire au Québec ? »</p>
+      « Un bon thriller de science-fiction ? »<br>
+      « Des comédies françaises incontournables ? »</p>
     `.trim()
   },
 
-  ar: {
-    title: "هل تحتاج إلى مساعدة قانونية؟",
-    button: "ابدأ الدردشة",
-    body: `
-      <p>⚖️ <strong>كيف يعمل</strong></p>
-      <p>تحدث مع مساعدك القانوني الذكي للحصول على إجابات سريعة وروابط لمصادر مفيدة.</p>
-      <ul class="list-disc pl-5 space-y-1">
-        <li>فهم المصطلحات والإجراءات القانونية الأساسية</li>
-        <li>الحصول على توجيهات حول العقود أو العمل أو حقوق المستأجرين</li>
-      </ul>
-      <p class="mt-2">المعلومات المقدمة عامة وليست نصيحة قانونية.</p>
-      <p class="mt-2"><em>أمثلة:</em><br>
-      "كيف أفسخ عقداً؟"<br>
-      "ما هي حقوقي كمستأجر؟"</p>
-    `.trim()
-  }
 }
 
 
@@ -58,97 +40,51 @@ export const IntroMessages = {
 export const WelcomeMessage = {
   en: `
 Hey there! 👋
-Welcome to your Legal Assistant.
-Ask me about everyday legal issues —
-I'll do my best to help. ⚖️
+Welcome to MoviesYouDidntWatch.
+Ask me for movie recommendations —
+I'll do my best to help. 🎬
 `.trim(),
 
   fr: `
 Bonjour ! 👋
-Bienvenue sur votre assistant juridique.
-Posez-moi vos questions juridiques courantes —
-je ferai de mon mieux pour vous aider. ⚖️
+Bienvenue sur MoviesYouDidntWatch.
+Demandez-moi des recommandations de films —
+je ferai de mon mieux pour vous aider. 🎬
 `.trim()
-,
-  ar: `
-مرحباً! 👋
-أهلاً بك في مساعدك القانوني.
-اطرح أسئلتك القانونية اليومية —
-سأبذل جهدي لمساعدتك. ⚖️
-`.trim()
+
 }
 
 
 
 export const suggestions = [
   {
-    key: "faq",
+    key: "trending",
     label: {
-      en: "FAQs",
-      fr: "FAQs",
-      ar: "أسئلة شائعة",
+      en: "Trending",
+      fr: "Tendances",
     },
     userText: {
-      en: "What are some common legal questions?",
-      fr: "Quelles sont les questions juridiques courantes ?",
-      ar: "ما هي الأسئلة القانونية الشائعة؟",
+      en: "What movies are trending?",
+      fr: "Quels films sont populaires en ce moment ?",
     },
     botReply: {
-      en: `
-Here are a few topics people often ask about:
-
-- tenant rights
-- small claims process
-- cancelling a contract
-
-What would you like help with?
-      `.trim(),
-
-      fr: `
-Voici quelques sujets souvent demandés :
-
-- droits des locataires
-- procédure des petites créances
-- résiliation d'un contrat
-
-De quoi avez-vous besoin ?
-      `.trim(),
-
-      ar: `
-إليك بعض المواضيع التي يسأل عنها الناس عادةً:
-
-- حقوق المستأجر
-- إجراءات محكمة الدعاوى الصغيرة
-- فسخ عقد
-
-بماذا يمكنني مساعدتك؟
-      `.trim(),
+      en: `Here are a few popular titles this week. Which genres interest you?`.trim(),
+      fr: `Voici quelques titres populaires cette semaine. Quels genres vous intéressent ?`.trim(),
     },
   },
   {
-    key: "tenant",
+    key: "genre",
     label: {
-      en: "Tenant Rights",
-      fr: "Droits des locataires",
-      ar: "حقوق المستأجر",
+      en: "Genre Picks",
+      fr: "Films par genre",
     },
     userText: {
-      en: "Tell me about tenant rights",
-      fr: "Parle-moi des droits des locataires",
-      ar: "أخبرني عن حقوق المستأجر",
+      en: "Suggest some action movies",
+      fr: "Suggère-moi des films d'action",
     },
     botReply: {
-      en: `
-I can provide general information about tenant rights, including maintenance obligations, eviction procedures and rent increases. How can I help?
-      `.trim(),
-
-      fr: `
-Je peux fournir des informations générales sur les droits des locataires : obligations d'entretien, procédures d'expulsion et augmentations de loyer. Comment puis-je vous aider ?
-      `.trim(),
-
-      ar: `
-يمكنني تزويدك بمعلومات عامة حول حقوق المستأجر مثل التزامات الصيانة وإجراءات الإخلاء وزيادات الإيجار. كيف يمكنني المساعدة؟
-      `.trim(),
+      en: `Here are a few action movies you might enjoy.`.trim(),
+      fr: `Voici quelques films d'action que vous pourriez aimer.`.trim(),
     },
   },
   {
@@ -156,63 +92,19 @@ Je peux fournir des informations générales sur les droits des locataires : obl
     label: {
       en: "Help",
       fr: "Aide",
-      ar: "مساعدة",
     },
     userText: {
       en: "Help me use this app",
       fr: "Aide-moi à utiliser cette application",
-      ar: "ساعدني في استخدام هذا التطبيق",
     },
     botReply: {
-      en: `
-⚖️ **How it works**
-Ask about everyday legal questions and I'll provide general information and resources.
-
-- Explanations of basic legal terms
-- Guidance on contracts, employment or tenant rights
-
-This tool doesn't replace a lawyer.
-
-_Examples:_
-- “How do I cancel a contract?”
-- “What are my rights if my landlord won't repair my apartment?”
-&nbsp;
-      `,
-
-      fr: `
-⚖️ **Comment ça marche :**
-
-Posez vos questions juridiques du quotidien et j'offrirai des informations générales et des ressources.
-
-- Explications de notions juridiques de base
-- Conseils sur les contrats, le travail ou les droits des locataires
-
-Cet outil ne remplace pas un avocat.
-
-_Exemples :_
-- « Comment résilier un contrat ? »
-- « Quels sont mes droits si mon propriétaire ne répare pas mon logement ? »
-&nbsp;`,
-
-      ar: `
-⚖️ **كيف يعمل**
-اسأل عن الأسئلة القانونية اليومية وسأقدم معلومات عامة وروابط.
-
-- شرح المصطلحات القانونية الأساسية
-- إرشادات حول العقود أو العمل أو حقوق المستأجر
-
-هذا التطبيق لا يغني عن المحامي.
-
-_أمثلة:_
-- "كيف أفسخ عقداً؟"
-- "ما هي حقوقي إذا رفض المالك إصلاح شقتي؟"
-&nbsp;`,
+      en: `Select a suggestion or ask for movies by genre, actor or year.`.trim(),
+      fr: `Choisissez une suggestion ou demandez des films par genre, acteur ou année.`.trim(),
     },
   },
 ]
 export const NetworkErrorMessage = {
   en: "\u274c Sorry, I couldn't reach the server.",
   fr: "\u274c D\u00e9sol\u00e9, je n'ai pas pu contacter le serveur.",
-  ar: "\u274c عذراً، تعذر الوصول إلى الخادم."
 }
 
