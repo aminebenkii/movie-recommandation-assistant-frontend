@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { v4 as uuidv4 } from "uuid"
 import { WelcomeMessage } from "@/data/ChatbotConfig"
 import { useLanguage } from "@/context/LanguageContext"
-import { getLegalReply } from "@/lib/api"
+import { getMovieRecommendation } from "@/lib/api"
 
 type ChatMessage = {
   role: "user" | "assistant"
@@ -29,7 +29,7 @@ export function useChatbot() {
     addMessage("user", text)
     setIsLoading(true)
 
-    const reply = await getLegalReply({ query: text, sessionId, lang })
+    const reply = await getMovieRecommendation({ query: text, sessionId, lang })
     setMessages(prev => [...prev, { role: "assistant", content: reply }])
     setIsLoading(false)
   }

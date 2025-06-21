@@ -1,11 +1,11 @@
-# ⚖️ Legal Assistant Chatbot
+# 🎬 MoviesYouDidntWatch Chatbot
 
-**Legal Assistant** is a modern, multilingual chatbot interface that helps users find quick answers to common legal questions. It features a clean UI built with **React**, **Vite**, **Tailwind CSS**, and **shadcn/ui** — backed by a conversational assistant that interacts via natural language.
+**MoviesYouDidntWatch** is a sleek chatbot interface that recommends films you may have missed. It uses **React**, **Vite**, **Tailwind CSS**, and **shadcn/ui** for a responsive UI backed by your own recommendation API.
 
 ## 🌐 Features
 
 - 🧠 Smart replies powered by your backend API
-- 🌍 English / French / Arabic language support
+- 🌍 English / French language support
 - 💡 Quick suggestions to help users get started
 - 💬 Beautiful chat bubbles with Markdown rendering
 - 🪄 Typing indicator animation
@@ -13,15 +13,15 @@
 
 ## 📸 Preview
 
-<img src="https://user-images.githubusercontent.com/example/flight-sniper-preview.png" alt="Legal Assistant Preview" width="600" />
+<img src="https://user-images.githubusercontent.com/example/flight-sniper-preview.png" alt="MoviesYouDidntWatch Preview" width="600" />
 
 ## 🚀 Getting Started
 
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/yourusername/legal-assistant-frontend.git
-cd legal-assistant-frontend
+git clone https://github.com/yourusername/MoviesYouDidntWatch.git
+cd MoviesYouDidntWatch
 ```
 
 ### 2. Install dependencies
@@ -56,7 +56,7 @@ src/
 ├── context/           # LanguageContext for i18n
 ├── data/              # Static chatbot content (suggestions, welcome messages)
 ├── hooks/             # Custom React hooks (useChatbot)
-├── lib/               # API helper for legal replies
+├── lib/               # API helper for movie recommendations
 ├── pages/             # Fullscreen pages (InitLangPage, ChatbotPage)
 ├── index.html         # Entry HTML
 ├── main.tsx           # App entrypoint

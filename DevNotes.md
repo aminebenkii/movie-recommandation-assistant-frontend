@@ -1,9 +1,9 @@
 
-# 🧠 Dev Notes — Legal Assistant Frontend
+# 🧠 Dev Notes — MoviesYouDidntWatch Frontend
 
 ## ✈️ Project Overview
 
-This is a **React + TypeScript** single-page chatbot interface for *Legal Assistant*, a conversational assistant that helps users find the best flight deals.
+This is a **React + TypeScript** single-page chatbot interface for *MoviesYouDidntWatch*, a conversational assistant that recommends films you might have missed.
 
 It supports:
 - 💬 A simple chatbot UI (one message bubble at initialization)
