@@ -82,131 +82,135 @@ je ferai de mon mieux pour vous aider. ⚖️
 
 export const suggestions = [
   {
-    key: "faq",
+    key: "comedies",
     label: {
-      en: "FAQs",
-      fr: "FAQs",
-      ar: "أسئلة شائعة",
+      en: "Top Comedies",
+      fr: "Meilleures comédies",
+      ar: "أفضل الكوميديات",
     },
     userText: {
-      en: "What are some common legal questions?",
-      fr: "Quelles sont les questions juridiques courantes ?",
-      ar: "ما هي الأسئلة القانونية الشائعة؟",
+      en: "Recommend some top comedies",
+      fr: "Recommande-moi des comédies incontournables",
+      ar: "أوصِني ببعض الكوميديات الرائعة",
     },
     botReply: {
       en: `
-Here are a few topics people often ask about:
+Here are a few crowd-pleasing comedies:
 
-- tenant rights
-- small claims process
-- cancelling a contract
+- The Grand Budapest Hotel
+- Superbad
+- Groundhog Day
 
-What would you like help with?
+Which one interests you?
       `.trim(),
 
       fr: `
-Voici quelques sujets souvent demandés :
+Voici quelques comédies populaires :
 
-- droits des locataires
-- procédure des petites créances
-- résiliation d'un contrat
+- The Grand Budapest Hotel
+- Superbad
+- Un jour sans fin
 
-De quoi avez-vous besoin ?
+Laquelle vous tente ?
       `.trim(),
 
       ar: `
-إليك بعض المواضيع التي يسأل عنها الناس عادةً:
+إليك بعض الكوميديات الممتعة:
 
-- حقوق المستأجر
-- إجراءات محكمة الدعاوى الصغيرة
-- فسخ عقد
+- The Grand Budapest Hotel
+- Superbad
+- Groundhog Day
 
-بماذا يمكنني مساعدتك؟
+أي واحد يهمك؟
       `.trim(),
     },
   },
   {
-    key: "tenant",
+    key: "thrillers",
     label: {
-      en: "Tenant Rights",
-      fr: "Droits des locataires",
-      ar: "حقوق المستأجر",
+      en: "Best Thrillers",
+      fr: "Meilleurs thrillers",
+      ar: "أفضل أفلام التشويق",
     },
     userText: {
-      en: "Tell me about tenant rights",
-      fr: "Parle-moi des droits des locataires",
-      ar: "أخبرني عن حقوق المستأجر",
+      en: "What are the best thrillers?",
+      fr: "Quels sont les meilleurs thrillers ?",
+      ar: "ما هي أفضل أفلام التشويق؟",
     },
     botReply: {
       en: `
-I can provide general information about tenant rights, including maintenance obligations, eviction procedures and rent increases. How can I help?
+Fans love these thrillers:
+
+- Se7en
+- Inception
+- Gone Girl
+
+Ready for a suspenseful night?
       `.trim(),
 
       fr: `
-Je peux fournir des informations générales sur les droits des locataires : obligations d'entretien, procédures d'expulsion et augmentations de loyer. Comment puis-je vous aider ?
+Les amateurs adorent ces thrillers :
+
+- Seven
+- Inception
+- Gone Girl
+
+Prêt(e) pour une soirée à suspense ?
       `.trim(),
 
       ar: `
-يمكنني تزويدك بمعلومات عامة حول حقوق المستأجر مثل التزامات الصيانة وإجراءات الإخلاء وزيادات الإيجار. كيف يمكنني المساعدة؟
+يعشق الكثيرون أفلام التشويق التالية:
+
+- Se7en
+- Inception
+- Gone Girl
+
+هل أنت مستعد لليلة مليئة بالإثارة؟
       `.trim(),
     },
   },
   {
-    key: "help",
+    key: "awards",
     label: {
-      en: "Help",
-      fr: "Aide",
-      ar: "مساعدة",
+      en: "Award Winners",
+      fr: "Films primés",
+      ar: "أفلام حائزة على جوائز",
     },
     userText: {
-      en: "Help me use this app",
-      fr: "Aide-moi à utiliser cette application",
-      ar: "ساعدني في استخدام هذا التطبيق",
+      en: "Show me award-winning movies",
+      fr: "Montre-moi des films primés",
+      ar: "أرني أفلاماً حائزة على جوائز",
     },
     botReply: {
       en: `
-⚖️ **How it works**
-Ask about everyday legal questions and I'll provide general information and resources.
+Here are Oscar-winning films from recent years:
 
-- Explanations of basic legal terms
-- Guidance on contracts, employment or tenant rights
+- Parasite
+- Nomadland
+- Everything Everywhere All at Once
 
-This tool doesn't replace a lawyer.
-
-_Examples:_
-- “How do I cancel a contract?”
-- “What are my rights if my landlord won't repair my apartment?”
-&nbsp;
+Interested in any of these?
       `,
 
       fr: `
-⚖️ **Comment ça marche :**
+Voici quelques films primés aux Oscars ces dernières années :
 
-Posez vos questions juridiques du quotidien et j'offrirai des informations générales et des ressources.
+- Parasite
+- Nomadland
+- Everything Everywhere All at Once
 
-- Explications de notions juridiques de base
-- Conseils sur les contrats, le travail ou les droits des locataires
-
-Cet outil ne remplace pas un avocat.
-
-_Exemples :_
-- « Comment résilier un contrat ? »
-- « Quels sont mes droits si mon propriétaire ne répare pas mon logement ? »
-&nbsp;`,
+L'un de ceux-ci vous attire ?
+      `,
 
       ar: `
-⚖️ **كيف يعمل**
-اسأل عن الأسئلة القانونية اليومية وسأقدم معلومات عامة وروابط.
+إليك أفلاماً فازت بالأوسكار في السنوات الأخيرة:
 
-- شرح المصطلحات القانونية الأساسية
-- إرشادات حول العقود أو العمل أو حقوق المستأجر
+- Parasite
+- Nomadland
+- Everything Everywhere All at Once
 
-هذا التطبيق لا يغني عن المحامي.
-
-_أمثلة:_
-- "كيف أفسخ عقداً؟"
-- "ما هي حقوقي إذا رفض المالك إصلاح شقتي؟"
-&nbsp;`,
+هل يثير أي منها اهتمامك؟
+      `,
     },
   },
 ]
