@@ -1,104 +1,167 @@
-# 🎬 MoviesYouDidntWatch Chatbot
+# 🎨 DevNotes.md – Frontend (MoviesYouDidntWatch.com)
 
-**MoviesYouDidntWatch** is a sleek chatbot interface that recommends films you may have missed. It uses **React**, **Vite**, **Tailwind CSS**, and **shadcn/ui** for a responsive UI backed by your own recommendation API.
+The frontend is a **React + TailwindCSS** single-page application built to interface cleanly with the FastAPI backend. It provides a conversational UI for discovering movies and integrates with JWT-based auth, OpenAI-powered chat, and movie recommendation APIs.
 
-## 🌐 Features
+---
 
-- 🧠 Smart replies powered by your backend API
-- 🌍 English / French language support
-- 💡 Quick suggestions to help users get started
-- 💬 Beautiful chat bubbles with Markdown rendering
-- 🪄 Typing indicator animation
-- 📱 Fully responsive, mobile-friendly layout
-
-## 📸 Preview
-
-<img src="https://user-images.githubusercontent.com/example/flight-sniper-preview.png" alt="MoviesYouDidntWatch Preview" width="600" />
-
-## 🚀 Getting Started
-
-### 1. Clone the repo
-
-```bash
-git clone https://github.com/yourusername/MoviesYouDidntWatch.git
-cd MoviesYouDidntWatch
-```
-
-### 2. Install dependencies
-
-```bash
-npm install
-```
-
-### 3. Configure the backend API
-
-Update the API endpoint in `/src/lib/api.ts`:
-
-```ts
-const res = await fetch("http://127.0.0.1:8000/chat", {
-```
-
-Or use a dynamic config (e.g. via `.env` or a `config.json` if supported).
-
-### 4. Start the dev server
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
-
-## 🧠 Architecture
+## 📐 Folder Structure
 
 ```
-src/
-├── components/        # UI components (ChatHeader, ChatFooter, etc.)
-├── context/           # LanguageContext for i18n
-├── data/              # Static chatbot content (suggestions, welcome messages)
-├── hooks/             # Custom React hooks (useChatbot)
-├── lib/               # API helper for movie recommendations
-├── pages/             # Fullscreen pages (InitLangPage, ChatbotPage)
-├── index.html         # Entry HTML
-├── main.tsx           # App entrypoint
-└── App.tsx            # Mounts ChatbotPage
+frontend/
+├── public/                     # Static assets
+├── src/
+│   ├── components/             # Reusable UI components
+│   │   ├── ChatBox.jsx
+│   │   ├── MovieCard.jsx
+│   │   ├── AuthForm.jsx
+│   │   └── LanguageSelector.jsx
+│   ├── pages/                  # Route-level pages
+│   │   ├── Hero.jsx
+│   │   ├── Login.jsx
+│   │   ├── Register.jsx
+│   │   └── ChatPage.jsx
+│   ├── context/
+│   │   └── AuthContext.js      # Auth state + JWT
+│   ├── hooks/                  # (Optional) Custom hooks
+│   ├── utils/                  # (Optional) Utility functions
+│   ├── App.jsx                 # Routes & layout
+│   └── main.jsx                # Entry point (ReactDOM)
+├── tailwind.config.js
+├── index.html
+└── package.json
 ```
 
-## ✍️ How It Works
+---
 
-- Chatbot state and messages managed via `useChatbot.ts`
-- Language stored in `localStorage` and handled globally by `LanguageContext`
-- API calls to the backend include `sessionId`, `query`, and `currency`
-- Suggestions and initial message pulled from `ChatbotConfig.ts`
-- Components are styled using Tailwind + `shadcn/ui`
+## 🧠 Tech Stack
 
-## 🛠️ Technologies Used
+| Tool           | Purpose                              |
+|----------------|--------------------------------------|
+| React          | UI framework                         |
+| TailwindCSS    | Styling utility classes              |
+| React Router   | Page routing                         |
+| Axios / Fetch  | HTTP requests                        |
+| i18next        | (Planned) Language internationalization |
+| LocalStorage   | JWT storage                          |
+| Vite or CRA    | (Depending on scaffold) Build tool   |
 
-- **React 18 + Vite**
-- **Tailwind CSS + shadcn/ui**
-- **Lucide Icons**
-- **React Markdown**
-- **TypeScript**
-- **i18n via Context + LocalStorage**
+---
 
-## 📦 Build for production
+## 🔁 Frontend Flow
 
-```bash
-npm run build
-```
+### 1. **User hits landing page**
+- `Hero.jsx`: Language selector + login/register buttons
 
-## 🧹 Lint your code
+### 2. **Auth**
+- `Login.jsx` and `Register.jsx`
+  - Form uses `POST /auth/login` and `POST /auth/register`
+  - On success → store JWT in localStorage → redirect to `/chat`
 
-Run ESLint to check for code quality issues:
+### 3. **Main App Page: `/chat`**
+- `ChatPage.jsx`: Main layout split in two panels
+  - **Left: ChatBox**
+    - Text input
+    - Messages scrollable (basic UX)
+    - Submits via `POST /chat`
+    - Renders assistant + user messages
+  - **Right: MovieGrid**
+    - Displays array of `<MovieCard />`
+    - Each card shows poster, rating, etc.
+    - ✅ Seen button → `POST /seen`
+    - ▶️ Trailer button → opens TMDB / YouTube
 
-```bash
-npm run lint
-```
+---
 
-## 🧑‍💻 Author
+## 🧱 Components Overview
 
-Made with ❤️ by **Amine Benkirane**  
-[LinkedIn](https://www.linkedin.com/in/aminebenkirane-ml) · [Email](mailto:aminebenkirane.pro@gmail.com)
+### `ChatBox.jsx`
+- Handles user input
+- Shows chat history
+- Submits messages to `/chat`
+- Handles loading state and assistant reply
+- Scrolls to bottom on new messages
 
-## 🪪 License
+### `MovieCard.jsx`
+- Props: poster, title, rating, trailer URL
+- Buttons:
+  - ✅ Mark as Seen → call `POST /seen`
+  - ▶️ Watch Trailer → opens external link
 
-MIT — free to use, modify, and share.
+### `AuthForm.jsx`
+- Used by both login and register pages
+- Handles form submission
+- On success → redirect with stored JWT
+
+### `LanguageSelector.jsx`
+- Toggles between English/French
+- Updates i18n state (planned)
+- Persists selected language to localStorage
+
+---
+
+## 🔐 Auth Flow (JWT)
+
+| Step                     | Action |
+|--------------------------|--------|
+| User logs in             | `POST /auth/login` returns JWT |
+| Store JWT in frontend    | `localStorage.setItem("token", jwt)` |
+| Attach to API requests   | Include `Authorization: Bearer ${token}` |
+| Protect chat page route  | Use context to block unauthenticated users |
+
+---
+
+## 🔌 API Endpoints Used
+
+| Endpoint        | Method | Usage |
+|-----------------|--------|-------|
+| `/auth/login`   | POST   | Login |
+| `/auth/register`| POST   | Register |
+| `/chat`         | POST   | Send chat message, get movie recommendations |
+| `/seen`         | POST   | Mark movie as seen |
+| `/seen`         | GET    | (Optional) Fetch seen movies to grey them out |
+| `/users/me`     | GET    | (Optional) Fetch user info for greeting etc. |
+
+---
+
+## ⚠️ Gotchas / Tips
+
+- **Always wrap API calls** to inject JWT and handle 401 errors (consider `useApi()` hook).
+- **ChatBox will be state-heavy** – start with a dumb version and iterate.
+- **Use `useEffect` smartly** to scroll to bottom when new messages arrive.
+- Don’t over-style. Tailwind is great for fast iteration. Keep things ugly but readable.
+- Don’t worry about mobile responsiveness unless you explicitly want to demo that.
+
+---
+
+## 📌 MVP Build Order (Recommended)
+
+1. ✅ Set up routes: `/`, `/login`, `/register`, `/chat`
+2. ✅ Implement `AuthForm.jsx` with API integration
+3. ✅ Store JWT after login, protect `/chat`
+4. ✅ Build a simple `ChatBox` with input + message list
+5. ✅ Call `/chat` and render assistant reply
+6. ✅ Render mock `<MovieCard />` results
+7. ✅ Wire up “Seen” button to `POST /seen`
+8. ⏳ Add loading states, error messages, etc.
+9. ⏳ Add language toggle (if needed)
+10. ⏳ Implement `/seen GET` to grey out already-seen movies
+
+---
+
+## 🧪 Testing (Manual for now)
+
+- [ ] Login/Register works and JWT persists
+- [ ] Can hit `/chat` with token
+- [ ] Movie cards render properly
+- [ ] "Seen" button works and updates backend
+- [ ] Reloading `/chat` retains session (or at least JWT)
+
+---
+
+## 🧠 Final Notes
+
+- Backend is the brain. Frontend is just a messenger — keep it dumb, keep it clean.
+- If something breaks, check:
+  1. Token in headers?
+  2. Response shape changed?
+  3. Network errors or CORS?
